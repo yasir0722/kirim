@@ -9,15 +9,14 @@
           <span>List</span>
         </router-link>
         
-        <div class="nav-item disabled" title="Read-only view - cannot add items">
+        <router-link to="/add" class="nav-item" :class="{ active: $route.path === '/add' }">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <circle cx="12" cy="12" r="10"/>
             <line x1="12" y1="8" x2="12" y2="16"/>
             <line x1="8" y1="12" x2="16" y2="12"/>
           </svg>
           <span>Add</span>
-          <small class="readonly-label">Read-only</small>
-        </div>
+        </router-link>
         
         <router-link to="/settings" class="nav-item" :class="{ active: $route.path === '/settings' }">
           <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -86,23 +85,6 @@ export default {
 .nav-item.active {
   color: #4ade80;
   background-color: #f0fdf4;
-}
-
-.nav-item.disabled {
-  color: #cbd5e1;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.nav-item.disabled:hover {
-  background-color: transparent;
-  color: #cbd5e1;
-}
-
-.readonly-label {
-  font-size: 10px;
-  color: #94a3b8;
-  margin-top: -2px;
 }
 
 .nav-icon {
