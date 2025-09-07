@@ -1,0 +1,25 @@
+{
+  "name": "grocery-tracker",
+  "version": "1.0.0",
+  "description": "Mobile Vue.js app for tracking groceries with Google Sheets integration",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4",
+    "axios": "^1.5.0",
+    "@vueuse/core": "^10.4.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.3.4",
+    "vite": "^4.4.9",
+    "vite-plugin-pwa": "^0.16.5"
+  },
+  "keywords": ["vue", "mobile", "grocery", "google-sheets"],
+  "author": "",
+  "license": "MIT"
+}
