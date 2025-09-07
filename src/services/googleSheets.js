@@ -133,15 +133,22 @@ class GoogleSheetsService {
     const dateAdded = new Date().toISOString().split('T')[0]
     
     try {
-      await axios.post(
-        `https://sheets.googleapis.com/v4/spreadsheets/${this.sheetId}/values/ToBuy!A:B:append`,
-        { values: [[item, dateAdded]] },
-        { params: { key: this.apiKey, valueInputOption: 'RAW' } }
+      const response = await axios.post(
+        `https://sheets.googleapis.com/v4/spreadsheets/${this.sheetId}/values/ToBuy!A:B:append?valueInputOption=RAW&key=${this.apiKey}`,
+        {
+          values: [[item, dateAdded]]
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
       )
 
       return { success: true, item, dateAdded }
     } catch (error) {
-      throw new Error('Failed to add item. Please check your API key and permissions.')
+      console.error('Error adding item to buy list:', error.response?.data || error.message)
+      throw new Error(`Failed to add item: ${error.response?.data?.error?.message || error.message}`)
     }
   }
 
@@ -151,15 +158,22 @@ class GoogleSheetsService {
     }
 
     try {
-      await axios.post(
-        `https://sheets.googleapis.com/v4/spreadsheets/${this.sheetId}/values/GroceryList!A:C:append`,
-        { values: [[item, category, quantity]] },
-        { params: { key: this.apiKey, valueInputOption: 'RAW' } }
+      const response = await axios.post(
+        `https://sheets.googleapis.com/v4/spreadsheets/${this.sheetId}/values/GroceryList!A:C:append?valueInputOption=RAW&key=${this.apiKey}`,
+        {
+          values: [[item, category, quantity]]
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
       )
 
       return { success: true, item, category, quantity }
     } catch (error) {
-      throw new Error('Failed to add item. Please check your API key and permissions.')
+      console.error('Error adding item to grocery list:', error.response?.data || error.message)
+      throw new Error(`Failed to add item: ${error.response?.data?.error?.message || error.message}`)
     }
   }
 

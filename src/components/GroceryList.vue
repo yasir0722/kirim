@@ -11,19 +11,7 @@
       </button>
     </div>
 
-    <div v-if="!isConfigured" class="config-notice">
-      <div class="notice-content">
-        <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <circle cx="12" cy="12" r="10"/>
-          <line x1="12" y1="8" x2="12" y2="12"/>
-          <line x1="12" y1="16" x2="12.01" y2="16"/>
-        </svg>
-        <p>Please configure your Google Sheets credentials in Settings to view your grocery list.</p>
-        <router-link to="/settings" class="config-btn">Go to Settings</router-link>
-      </div>
-    </div>
-
-    <div v-else-if="error" class="error-message">
+    <div v-if="error" class="error-message">
       <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <circle cx="12" cy="12" r="10"/>
         <line x1="15" y1="9" x2="9" y2="15"/>
@@ -84,7 +72,7 @@
             <path d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5-5M7 13l-2.5 5"/>
           </svg>
           <p>No items to buy yet.</p>
-          <router-link to="/add" class="add-item-btn">Add First Item</router-link>
+          <p class="read-only-note">This is a read-only view of your Google Sheet.</p>
         </div>
         
         <div v-for="item in toBuyItems" :key="item.id" class="item-card">
@@ -116,8 +104,6 @@ export default {
     const isConfigured = computed(() => googleSheetsService.isConfigured())
 
     const loadData = async () => {
-      if (!isConfigured.value) return
-
       loading.value = true
       error.value = ''
 
@@ -338,10 +324,6 @@ export default {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.items-list {
-  space-y: 12px;
-}
-
 .empty-state {
   text-align: center;
   padding: 40px 20px;
@@ -359,6 +341,13 @@ export default {
 .empty-state p {
   margin-bottom: 16px;
   font-size: 16px;
+}
+
+.read-only-note {
+  font-size: 14px;
+  color: #94a3b8 !important;
+  font-style: italic;
+  margin-bottom: 0 !important;
 }
 
 .add-item-btn {

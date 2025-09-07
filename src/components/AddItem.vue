@@ -11,8 +11,10 @@
           <line x1="12" y1="8" x2="12" y2="12"/>
           <line x1="12" y1="16" x2="12.01" y2="16"/>
         </svg>
-        <p>Please configure your Google Sheets credentials in Settings to add items.</p>
-        <router-link to="/settings" class="config-btn">Go to Settings</router-link>
+        <p><strong>Read-Only Mode</strong></p>
+        <p>This app is connected to a public Google Sheet in read-only mode. You can view grocery lists but cannot add items.</p>
+        <p>To enable adding items, you would need to set up your own Google Sheets API credentials.</p>
+        <router-link to="/groceries" class="config-btn">Back to List</router-link>
       </div>
     </div>
 
@@ -299,10 +301,6 @@ export default {
   color: #64748b;
   margin-bottom: 20px;
   line-height: 1.5;
-}
-
-.add-form {
-  space-y: 16px;
 }
 
 .input-group {
