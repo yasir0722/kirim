@@ -3,9 +3,14 @@ import axios from 'axios'
 class GoogleSheetsService {
   constructor() {
     this.apiKey = localStorage.getItem('googleApiKey') || ''
-    this.sheetId = localStorage.getItem('googleSheetId') || ''
+    this.sheetId = localStorage.getItem('googleSheetId') || '1ReDbCa34AzTJSvO1-KPPADUok-eaEXEZufThw8yuBfA'
     this.groceryListRange = 'GroceryList!A:C' // Assuming columns: Item, Category, Quantity
     this.toBuyRange = 'ToBuy!A:B' // Assuming columns: Item, DateAdded
+    
+    // Set default sheet ID if not already set
+    if (!localStorage.getItem('googleSheetId')) {
+      localStorage.setItem('googleSheetId', this.sheetId)
+    }
   }
 
   setCredentials(apiKey, sheetId) {
