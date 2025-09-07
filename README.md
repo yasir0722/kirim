@@ -89,6 +89,32 @@ A mobile-friendly Vue.js web application for managing your grocery lists with Go
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
+- `npm run deploy` - Deploy to GitHub Pages manually
+
+### Deployment
+
+#### Automatic Deployment (Recommended)
+
+This app is configured for automatic deployment to GitHub Pages using GitHub Actions:
+
+1. **Enable GitHub Pages**:
+   - Go to your repository on GitHub
+   - Navigate to Settings > Pages
+   - Under "Source", select "GitHub Actions"
+
+2. **Push to main branch**:
+   - Any push to the `main` branch will automatically trigger deployment
+   - The app will be available at: `https://yasir0722.github.io/kirim/`
+
+#### Manual Deployment
+
+You can also deploy manually using the gh-pages package:
+
+```bash
+npm run deploy
+```
+
+This will build the app and push it to the `gh-pages` branch.
 
 ### Project Structure
 
